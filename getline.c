@@ -3928,7 +3928,7 @@ static int gl_print_control_sequence(GetLine *gl, int nline, const char *string)
 #if defined(USE_TERMINFO) || defined(USE_TERMCAP)
     tputs_gl = gl;
     errno = 0;
-    tputs((char *)string, nline, gl_tputs_putchar);
+    tputs((char *)string, nline, (int*) &gl_tputs_putchar);
     waserr = errno != 0;
 #else
     waserr = gl_print_raw_string(gl, 1, string, -1);
